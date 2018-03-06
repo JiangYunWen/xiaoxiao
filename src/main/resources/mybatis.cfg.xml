@@ -6,11 +6,13 @@
 
     <settings>
         <setting name="logImpl" value="LOG4J2"/>
+        <!--开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!--&lt;!&ndash; 别名 &ndash;&gt;-->
     <!--<typeAliases>-->
-        <!--<typeAlias type="com.zking.oa.model.Book" alias="Book"/>-->
+        <!--<typeAlias type="com.zking.crm.model.Book" alias="Book"/>-->
     <!--</typeAliases>-->
 
     <!-- 配置mybatis运行环境 -->

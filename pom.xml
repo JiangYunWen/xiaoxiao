@@ -21,6 +21,13 @@
 
   <dependencies>
 
+    <!--5.1 在工程的pom文件中增加spring-test的依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
     <!-- ********************** spring依赖 ********************** -->
     <!--1)spring核心依赖-->
     <dependency>
@@ -77,11 +84,11 @@
     </dependency>
 
     <!--6)springMVC框架目前用不着，下门课程-->
-    <!--<dependency>-->
-    <!--<groupId>org.springframework</groupId>-->
-    <!--<artifactId>spring-webmvc</artifactId>-->
-    <!--<version>${spring.version}</version>-->
-    <!--</dependency>-->
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>${spring.version}</version>
+    </dependency>
 
     <!--1.2 spring整合mybatis-->
     <dependency>
@@ -161,6 +168,59 @@
       <artifactId>pagehelper</artifactId>
       <version>5.1.2</version>
     </dependency>
+
+    <!--jsp自定义标签 引入的依赖要和tomcat中的版本一致 -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <version>8.5.20</version>
+    </dependency>
+
+    <!-- ********************** JSTL依赖 ********************** -->
+    <!-- 缺少下面的这两个jar包会报java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config-->
+    <!-- 原因：org.springframework.web.servlet.view.JstlView在视图解析时需要这二个jar包-->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+
+    <!--添加jackson相关依赖-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.9.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.9.3</version>
+    </dependency>
+
+    <!-- redis配置start -->
+    <!-- jedis （一个redis client端的jar）-->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.9.0</version>
+    </dependency>
+    <!-- spring-data-redis 依赖-->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>1.7.2.RELEASE</version>
+    </dependency>
+    <!-- redis配置end -->
 
 
   </dependencies>

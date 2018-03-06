@@ -29,7 +29,7 @@
         <!-- 01 指定javaBean生成的位置 -->
         <!-- targetPackage：指定生成的model生成所在的包名 -->
         <!-- targetProject：指定在该项目下所在的路径  -->
-        <javaModelGenerator targetPackage="com.zking.oa.model"
+        <javaModelGenerator targetPackage="com.zking.crm.model"
                             targetProject="src/main/java">
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
@@ -42,7 +42,7 @@
         </javaModelGenerator>
 
         <!-- 02 指定sql映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.zking.oa.mapper"
+        <sqlMapGenerator targetPackage="com.zking.crm.mapper"
                          targetProject="src/main/java">
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
@@ -52,7 +52,7 @@
         <!-- type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象 -->
         <!-- type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象 -->
         <!-- type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口 -->
-        <javaClientGenerator targetPackage="com.zking.oa.mapper"
+        <javaClientGenerator targetPackage="com.zking.crm.mapper"
                              targetProject="src/main/java" type="XMLMAPPER">
             <!-- 是否在当前路径下新加一层schema,false路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false"/>
