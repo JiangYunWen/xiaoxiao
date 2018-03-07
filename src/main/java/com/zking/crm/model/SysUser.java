@@ -1,6 +1,8 @@
 package com.zking.crm.model;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable{
     private Integer usrId;
 
     private String usrName;
@@ -61,5 +63,16 @@ public class SysUser {
 
     public void setUsrFlag(Integer usrFlag) {
         this.usrFlag = usrFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "usrId=" + usrId +
+                ", usrName='" + usrName + '\'' +
+                ", usrPassword='" + usrPassword + '\'' +
+                ", usrRoleId=" + usrRoleId +
+                ", usrFlag=" + usrFlag +
+                '}';
     }
 }

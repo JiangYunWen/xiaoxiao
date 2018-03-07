@@ -10,13 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="copyright" content="All Rights Reserved, Copyright (C) 2013, Wuyeguo, Ltd." />
 
-<link href="/css/wu.css" rel="stylesheet" type="text/css" />
-<link href="/css/icon.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/easyui/1.3.4/themes/default/easyui.css" />
+<link href="css/wu.css" rel="stylesheet" type="text/css" />
+<link href="css/icon.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="easyui/1.3.4/themes/default/easyui.css" />
 
-<script type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="/easyui/1.3.4/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="easyui/1.3.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
 
 <%-- 
 <link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/themes/default/easyui.css">

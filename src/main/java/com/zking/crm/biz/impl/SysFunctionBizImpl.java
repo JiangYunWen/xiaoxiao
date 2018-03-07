@@ -66,4 +66,6 @@ public class SysFunctionBizImpl implements ISysFunctionBiz {
     public List<SysFunction> list(SysFunction sysFunction) {
         return sysFunctionMapper.list(sysFunction);
     }
+
+
 }

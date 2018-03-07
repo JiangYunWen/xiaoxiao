@@ -10,6 +10,13 @@
       <arg column="usr_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
+  <resultMap id="list" type="com.zking.crm.model.SysUser" >
+      <id column="usr_id" property="usrId" javaType="java.lang.Integer" />
+      <result column="usr_name" property="usrName" javaType="java.lang.String" />
+      <result column="usr_password" property="usrPassword" javaType="java.lang.String" />
+      <result column="usr_role_id" property="usrRoleId" javaType="java.lang.Integer" />
+      <result column="usr_flag" property="usrFlag" javaType="java.lang.Integer" />
+  </resultMap>
   <sql id="Base_Column_List" >
     usr_id, usr_name, usr_password, usr_role_id, usr_flag
   </sql>
@@ -19,7 +26,12 @@
     from sys_user
     where usr_id = #{usrId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="list">
+      SELECT *
+      from sys_user
+       where 1=1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_user
     where usr_id = #{usrId,jdbcType=INTEGER}
   </delete>

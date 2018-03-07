@@ -25,7 +25,7 @@
         <!-- viewClass需要在pom中引入两个包：standard.jar and jstl.jar -->
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"></property>
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/WEB-INF/crm/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 

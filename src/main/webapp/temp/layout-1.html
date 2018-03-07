@@ -24,7 +24,7 @@
             <div class="wu-toolbar-search">
                 <label>起始时间：</label><input class="easyui-datebox" style="width:100px">
                 <label>结束时间：</label><input class="easyui-datebox" style="width:100px">
-                <label>用户组：</label> 
+                <label>用户组：</label>
                 <select class="easyui-combobox" panelHeight="auto" style="width:100px">
                     <option value="0">选择用户组</option>
                     <option value="1">黄钻</option>
@@ -45,7 +45,7 @@
         <table>
             <tr>
                 <td width="60" align="right">姓 名:</td>
-                <td><input type="text" name="name" class="wu-text" /></td>
+                <td><input type="text" name="name" class="wu-text"></td>
             </tr>
             <tr>
                 <td align="right">邮 箱:</td>
@@ -236,7 +236,7 @@
 	* Name 载入数据
 	*/
 	$('#wu-datagrid').datagrid({
-		url:'temp/datagrid.php',
+		url:'/sys/list',
 		loadFilter:pagerFilter,		
 		rownumbers:true,
 		singleSelect:false,
@@ -247,13 +247,11 @@
 		fit:true,
 		columns:[[
 			{ checkbox:true},
-			{ field:'productid',title:'productid',width:100,sortable:true},
-			{ field:'productname',title:'productname',width:180,sortable:true},
-			{ field:'unitcost',title:'unitcost',width:100},
-			{ field:'listprice',title:'listprice',width:100},
-			{ field:'attr1',title:'attr1',width:100},
-			{ field:'itemid',title:'itemid',width:100},
-			{ field:'status',title:'status',width:100}
+			{ field:'usrId',title:'用户编号',width:100,sortable:true},
+			{ field:'usrName',title:'用户姓名',width:180,sortable:true},
+			{ field:'usrPassword',title:'用户密码',width:100},
+			{ field:'usrRoleId',title:'用户角色',width:100},
+			{ field:'usrFlag',title:'用户标识',width:100},
 		]]
 	});
 </script>
