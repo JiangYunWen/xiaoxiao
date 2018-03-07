@@ -72,7 +72,47 @@
             <!--&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
         <!--</table>-->
 
-        <table schema="" tableName="t_book" domainObjectName="Book"
+        <table schema="" tableName="sys_function" domainObjectName="SysFunction"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sys_right" domainObjectName="SysRight"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sys_role" domainObjectName="SysRole"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sys_role_function" domainObjectName="SysRoleFunction"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sys_role_right" domainObjectName="SysRoleRight"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sys_user" domainObjectName="SysUser"
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false">
             <!-- 忽略列，不生成bean 字段 -->

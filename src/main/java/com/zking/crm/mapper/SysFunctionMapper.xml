@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.crm.mapper.SysFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.crm.model.SysFunction" >
+    <constructor >
+      <idArg column="function_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="function_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="path" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parameter" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="method" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="function_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="list" type="com.zking.crm.model.SysFunction" >
+      <id column="function_id" property="functionId" javaType="java.lang.Integer" />
+      <result column="function_name" property="functionName" javaType="java.lang.String" />
+      <result column="path" property="path" javaType="java.lang.String" />
+      <result column="parameter" property="parameter" javaType="java.lang.String" />
+      <result column="method" property="method" javaType="java.lang.String" />
+      <result column="function_desc" property="functionDesc" javaType="java.lang.String" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    function_id, function_name, path, parameter, method, function_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </select>
+    <select id="list" resultMap="list" parameterType="com.zking.crm.model.SysFunction">
+      SELECT *
+      from sys_function
+      where 1=1
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.crm.model.SysFunction" >
+    insert into sys_function (function_id, function_name, path, 
+      parameter, method, function_desc
+      )
+    values (#{functionId,jdbcType=INTEGER}, #{functionName,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{parameter,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, #{functionDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.crm.model.SysFunction" >
+    insert into sys_function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+        function_id,
+      </if>
+      <if test="functionName != null" >
+        function_name,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="parameter != null" >
+        parameter,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="functionDesc != null" >
+        function_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+        #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="functionName != null" >
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null" >
+        #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="functionDesc != null" >
+        #{functionDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.crm.model.SysFunction" >
+    update sys_function
+    <set >
+      <if test="functionName != null" >
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null" >
+        parameter = #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="functionDesc != null" >
+        function_desc = #{functionDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.crm.model.SysFunction" >
+    update sys_function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      parameter = #{parameter,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      function_desc = #{functionDesc,jdbcType=VARCHAR}
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+</mapper>

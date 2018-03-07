@@ -54,5 +54,6 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
-    <mvc:resources location="/style/" mapping="/style/**"/>
+    <mvc:resources location="/easyui/" mapping="/easyui/**"/>
+    <mvc:resources location="/temp/" mapping="/temp/**"/>
 </beans>
