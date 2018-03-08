@@ -49,14 +49,17 @@ public class SysUserImplTest extends BaseTest {
 
     @Test
     public void updateByPrimaryKeySelective() throws Exception {
+        sysUser.setUsrId(4);
+        sysUser.setUsrName("西施");
+        iSysUser.updateByPrimaryKeySelective(sysUser);
     }
 
-    @Test
-    public void list() throws Exception {
-        List<SysUser> list = iSysUser.list(sysUser);
-        for (SysUser l : list) {
-            System.out.println(l);
-        }
+//    @Test
+//    public void list() throws Exception {
+//        List<SysUser> list = iSysUser.list(sysUser);
+//        for (SysUser l : list) {
+//            System.out.println(l);
+//        }
 
-    }
+//    }
 }

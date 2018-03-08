@@ -29,7 +29,13 @@
     <select id="list" resultMap="list">
       SELECT *
       from sys_user
-       where 1=1
+      where 1=1
+        <if test="usrName!=null and usrName!=''">
+        and usr_name like #{usrName}
+        </if>
+      <if test="start!=null and size!=null">
+        limit #{start},#{size}
+      </if>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_user

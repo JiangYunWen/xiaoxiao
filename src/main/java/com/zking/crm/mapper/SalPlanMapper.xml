@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.crm.mapper.SalPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.crm.model.SalPlan" >
+    <constructor >
+      <idArg column="pla_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pla_chc_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pla_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="pla_todo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pla_result" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pla_id, pla_chc_id, pla_date, pla_todo, pla_result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sal_plan
+    where pla_id = #{plaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sal_plan
+    where pla_id = #{plaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.crm.model.SalPlan" >
+    insert into sal_plan (pla_id, pla_chc_id, pla_date, 
+      pla_todo, pla_result)
+    values (#{plaId,jdbcType=INTEGER}, #{plaChcId,jdbcType=INTEGER}, #{plaDate,jdbcType=TIMESTAMP}, 
+      #{plaTodo,jdbcType=VARCHAR}, #{plaResult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.crm.model.SalPlan" >
+    insert into sal_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="plaId != null" >
+        pla_id,
+      </if>
+      <if test="plaChcId != null" >
+        pla_chc_id,
+      </if>
+      <if test="plaDate != null" >
+        pla_date,
+      </if>
+      <if test="plaTodo != null" >
+        pla_todo,
+      </if>
+      <if test="plaResult != null" >
+        pla_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="plaId != null" >
+        #{plaId,jdbcType=INTEGER},
+      </if>
+      <if test="plaChcId != null" >
+        #{plaChcId,jdbcType=INTEGER},
+      </if>
+      <if test="plaDate != null" >
+        #{plaDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plaTodo != null" >
+        #{plaTodo,jdbcType=VARCHAR},
+      </if>
+      <if test="plaResult != null" >
+        #{plaResult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.crm.model.SalPlan" >
+    update sal_plan
+    <set >
+      <if test="plaChcId != null" >
+        pla_chc_id = #{plaChcId,jdbcType=INTEGER},
+      </if>
+      <if test="plaDate != null" >
+        pla_date = #{plaDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plaTodo != null" >
+        pla_todo = #{plaTodo,jdbcType=VARCHAR},
+      </if>
+      <if test="plaResult != null" >
+        pla_result = #{plaResult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pla_id = #{plaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.crm.model.SalPlan" >
+    update sal_plan
+    set pla_chc_id = #{plaChcId,jdbcType=INTEGER},
+      pla_date = #{plaDate,jdbcType=TIMESTAMP},
+      pla_todo = #{plaTodo,jdbcType=VARCHAR},
+      pla_result = #{plaResult,jdbcType=VARCHAR}
+    where pla_id = #{plaId,jdbcType=INTEGER}
+  </update>
+</mapper>

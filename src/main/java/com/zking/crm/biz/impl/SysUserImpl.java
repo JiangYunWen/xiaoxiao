@@ -65,7 +65,7 @@ public class SysUserImpl implements ISysUser {
     }
 
     @Override
-    public List<SysUser> list(SysUser sysUser) {
-        return sysUserMapper.list(sysUser);
+    public List<SysUser> list(Map<String, Object> map) {
+        return sysUserMapper.list(map);
     }
 }

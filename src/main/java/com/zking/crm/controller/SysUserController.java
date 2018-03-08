@@ -45,11 +45,18 @@ public class SysUserController {
 
     @RequestMapping("/list")
     public String list(@RequestParam(value="page",required=false) String page, @RequestParam(value="rows",required=false) String rows, SysUser sysUser, HttpServletResponse res) throws Exception{
+        PageBean pageBean=new PageBean();
+        pageBean.setCurPage(Integer.parseInt(page));
+        pageBean.setPageRecord(Integer.parseInt(rows));
 
         Map<String,Object> map=new HashMap<String,Object>();
-        map.put("userName", StringUtil.formatLike(sysUser.getUsrName()));
+        map.put("usrName", StringUtil.formatLike(sysUser.getUsrName()));
 
-        List<SysUser> userList=iSysUser.list(sysUser);
+        System.out.println(sysUser.getUsrName());
+        map.put("start", pageBean.getCurPage());
+        map.put("size", pageBean.getPageRecord());
+
+        List<SysUser> userList=iSysUser.list(map);
 //        Long total=iSysUser.getTotal(map);
         JSONObject result=new JSONObject();
         JSONArray jsonArray=JSONArray.fromObject(userList);
@@ -67,21 +74,38 @@ public class SysUserController {
     @RequestMapping("/addUser")
     public String addUser(SysUser sysUser, HttpServletResponse res) throws Exception{
         System.out.println("进来了");
-        int resultTotal = 0;
+//        int resultTotal = 0;
         if (sysUser.getUsrId() == null) {
-            resultTotal = iSysUser.insertSelective(sysUser);
+            iSysUser.insertSelective(sysUser);
         }else{
-            resultTotal = iSysUser.updateByPrimaryKeySelective(sysUser);
+            System.out.println(sysUser.getUsrId()+"：id正确");
+            System.out.println(sysUser.getUsrName()+"：name正确");
+            System.out.println(sysUser.getUsrPassword()+"：pwd正确");
+
+            iSysUser.updateByPrimaryKeySelective(sysUser);
+            sysUser.setUsrFlag(1);
         }
+
         JSONObject jsonObject = new JSONObject();
 
-        if(resultTotal > 0){   //说明修改或添加成功
-            jsonObject.put("success", true);
-        }else{
-            jsonObject.put("success", false);
-        }
+//        if(resultTotal > 0){   //说明修改或添加成功
+//            jsonObject.put("success", true);
+//        }else{
+//            jsonObject.put("success", false);
+//        }
         RsponseUtil.write(res, jsonObject);
 
+        return null;
+    }
+
+    @RequestMapping("/delUser")
+    public String delete(SysUser sysUser,HttpServletResponse res) throws Exception{
+
+        JSONObject jsonObject = new JSONObject();
+        iSysUser.deleteByPrimaryKey(sysUser.getUsrId());
+
+        jsonObject.put("success", true);
+        RsponseUtil.write(res, jsonObject);
         return null;
     }
 
