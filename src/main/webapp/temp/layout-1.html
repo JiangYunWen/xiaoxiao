@@ -40,24 +40,52 @@
     </div>
 </div>
 <!-- Begin of easyui-dialog -->
-<div id="wu-dialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-save'" style="width:400px; padding:10px;">
+<div id="wu-dialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-save'" style="width:400px;  padding:20px;">
 	<form id="wu-form" method="post">
-        <table>
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<td width="60" align="right">姓 名:</td>-->
+                <!--<td><input type="text" name="name" class="wu-text"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td align="right">邮 箱:</td>-->
+                <!--<td><input type="text" name="email" class="wu-text" /></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td align="right">主 题:</td>-->
+                <!--<td><input type="text" name="subject" class="wu-text" /></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td valign="top" align="right">内 容:</td>-->
+                <!--<td><textarea name="content" rows="6" class="wu-textarea" style="width:260px"></textarea></td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        <table >
             <tr>
-                <td width="60" align="right">姓 名:</td>
-                <td><input type="text" name="name" class="wu-text"></td>
+                <td width="60" align="right">用户名：</td>
+                <td><input type="text" id="usrName" name="usrName"
+                           class="wu-text" required="true" />&nbsp;<span style="color: red">*</span>
+                </td>
             </tr>
             <tr>
-                <td align="right">邮 箱:</td>
-                <td><input type="text" name="email" class="wu-text" /></td>
+                <td align="right">密码：</td>
+                <td><input type="password" id="usrPassword" name="usrPassword"
+                           class="wu-text" required="true" />&nbsp;<span
+                        style="color: red">*</span>
+                </td>
             </tr>
             <tr>
-                <td align="right">主 题:</td>
-                <td><input type="text" name="subject" class="wu-text" /></td>
-            </tr>
-            <tr>
-                <td valign="top" align="right">内 容:</td>
-                <td><textarea name="content" rows="6" class="wu-textarea" style="width:260px"></textarea></td>
+                <td align="right">用户角色：</td>
+                <td><select name="usrRoleId" class="easyui-combobox"
+                            id="usrRoleId" style="width: 100px;" editable="false"
+                            panelHeight="auto">
+                    <option value="">请选择角色</option>
+                    <option value="1">系统管理员</option>
+                    <option value="2">销售主管</option>
+                    <option value="3">客户经理</option>
+                    <option value="4">高管</option>
+                </select> &nbsp;<span style="color: red">*</span>
+                </td>
             </tr>
         </table>
     </form>
@@ -79,9 +107,9 @@
 	*/
 	function add(){
 		$('#wu-form').form('submit', {
-			url:'',
+			url:'/sys/addUser',
 			success:function(data){
-				if(data){
+				if(data!=null){
 					$.messager.alert('信息提示','提交成功！','info');
 					$('#wu-dialog').dialog('close');
 				}
@@ -98,7 +126,7 @@
 	*/
 	function edit(){
 		$('#wu-form').form('submit', {
-			url:'',
+			url:'/sys/addUser',
 			success:function(data){
 				if(data){
 					$.messager.alert('信息提示','提交成功！','info');
@@ -163,26 +191,37 @@
             }]
         });
 	}
-	
+    function openUserModifyDialog() {
+        alert(2222);
+        var selectedRows = $("#dg").datagrid("getSelections");
+        if (selectedRows.length != 1) {
+            $.messager.alert("系统提示", "请选择一条要编辑的数据！");
+            return;
+        }
+        var row = selectedRows[0];
+        $("#dlg").dialog("open").dialog("setTitle", "编辑用户信息");
+        $("#fm").form("load", row);
+        url = "/user/save.do?id=" + row.id;
+    }
 	/**
 	* Name 打开修改窗口
 	*/
 	function openEdit(){
 		$('#wu-form').form('clear');
 		var item = $('#wu-datagrid').datagrid('getSelected');
-		//alert(item.productid);return;
+//		alert(item.productid);return;
 		$.ajax({
-			url:'',
-			data:'',
+			url:'/sys/addUser',
+			data:{"usrId":item.usrId},
 			success:function(data){
 				if(data){
-					$('#wu-dialog').dialog('close');	
+					$('#wu-dialog').dialog('close');
 				}
 				else{
 					//绑定值
 					$('#wu-form').form('load', data)
 				}
-			}	
+			}
 		});
 		$('#wu-dialog').dialog({
 			closed: false,

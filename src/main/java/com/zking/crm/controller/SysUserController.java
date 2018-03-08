@@ -64,4 +64,25 @@ public class SysUserController {
         return "index";
     }
 
+    @RequestMapping("/addUser")
+    public String addUser(SysUser sysUser, HttpServletResponse res) throws Exception{
+        System.out.println("进来了");
+        int resultTotal = 0;
+        if (sysUser.getUsrId() == null) {
+            resultTotal = iSysUser.insertSelective(sysUser);
+        }else{
+            resultTotal = iSysUser.updateByPrimaryKeySelective(sysUser);
+        }
+        JSONObject jsonObject = new JSONObject();
+
+        if(resultTotal > 0){   //说明修改或添加成功
+            jsonObject.put("success", true);
+        }else{
+            jsonObject.put("success", false);
+        }
+        RsponseUtil.write(res, jsonObject);
+
+        return null;
+    }
+
 }
