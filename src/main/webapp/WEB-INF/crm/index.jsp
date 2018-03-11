@@ -34,7 +34,7 @@
             <div title="营销管理" data-options="iconCls:'icon-application-form-edit'" style="padding:5px;">
     			<ul class="easyui-tree wu-side-tree">
                 	<li iconCls="icon-chart-organisation"><a href="javascript:void(0)" data-icon="icon-chart-organisation" data-link="temp/sallist.jsp" iframe="0">销售机会管理</a></li>
-                    <li iconCls="icon-users"><a href="javascript:void(0)" data-icon="icon-users" data-link="/plan/plist" iframe="0">客户开发计划</a></li>
+                    <li iconCls="icon-users"><a href="javascript:void(0)" data-icon="icon-users" data-link="plan/toDev" iframe="0">客户开发计划</a></li>
                 </ul>
             </div>
             <div title="统计报表" data-options="iconCls:'icon-creditcards'" style="padding:5px;">

@@ -51,12 +51,11 @@
     <select id="list" resultMap="list">
       select *
       from sal_chance
-      where 1=1 and chc_status=1
     </select>
   <select id="planlist" resultMap="list" parameterType="com.zking.crm.model.SalChance">
       select *
       from sal_chance
-      where 1=1 and chc_status=2
+      where  chc_status &gt;1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sal_chance

@@ -361,6 +361,7 @@
     //删除销售机会
     function deleteSal() {
         var selectedRows = $("#sal").datagrid("getSelected");
+
         $.messager.confirm("系统提示", "您确定要删除这条数据吗？", function(r) {
             if (r) {
                 $.post("/sal/delSal", {chcId:selectedRows.chcId}, function(result) {
@@ -379,6 +380,7 @@
     function openSalModisyDialog() {
         var item = $('#sal').datagrid('getSelections');
         var row = item[0];
+        alert(row);
         if(item.length!=1) {
             $.messager.alert("系统提示", "请选择一条要编辑的数据");
             return;

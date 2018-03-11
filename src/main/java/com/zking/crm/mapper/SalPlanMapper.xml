@@ -71,8 +71,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.zking.crm.model.SalPlan" >
     update sal_plan
     <set >
-      <if test="plaChcId != null" >
-        pla_chc_id = #{plaChcId,jdbcType=INTEGER},
+      <if test="plaId != null" >
+        pla__id = #{plaId,jdbcType=INTEGER},
       </if>
       <if test="plaDate != null" >
         pla_date = #{plaDate,jdbcType=TIMESTAMP},
@@ -84,7 +84,7 @@
         pla_result = #{plaResult,jdbcType=VARCHAR},
       </if>
     </set>
-    where pla_id = #{plaId,jdbcType=INTEGER}
+    where pla_chc_id = #{plaChcId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zking.crm.model.SalPlan" >
     update sal_plan

@@ -48,8 +48,20 @@
                 { field:'chcTitle',title:'概要',width:100},
                 { field:'chcLinkman',title:'联系人',width:100},
                 { field:'chcTel',title:'联系人电话',width:100},
-                { field:'chcCreateDate',title:'创建时间',width:100
-				}
+                { field:'chcStatus',title:'状态',width:100,
+                    formatter: function (val,rec) {
+                        var c;
+                        if(rec.chcStatus==1){
+                            c="未开发";
+                        }else if(rec.chcStatus==2){
+                            c="开发中";
+                        }else if(rec.chcStatus==3){
+                            c="开发成功";
+                        }else if(rec.chcStatus==4){
+                            c="开发失败";
+                        }
+                        return c;
+                    }}
             ]]
         });
 
