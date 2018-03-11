@@ -9,7 +9,7 @@ public class PageBean implements Serializable {
 	private static final long serialVersionUID = -7544706514503688395L;
 
 	private int curPage = 1;// 当前页
-	private int pageRecord = 10;// 页大小
+	private int pageRecord = 5;// 页大小
 	private int totalRecord;// 总记录数
 
 	private boolean paginate = true;/* 是否分页，默认分页 */

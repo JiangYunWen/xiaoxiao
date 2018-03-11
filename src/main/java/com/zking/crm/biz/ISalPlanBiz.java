@@ -1,14 +1,12 @@
-package com.zking.crm.mapper;
+package com.zking.crm.biz;
 
 import com.zking.crm.model.SalPlan;
 import org.omg.CORBA.Object;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
-@Repository
-public interface SalPlanMapper {
+public interface ISalPlanBiz {
     int deleteByPrimaryKey(Integer plaId);
 
     int insert(SalPlan record);

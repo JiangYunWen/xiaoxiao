@@ -49,7 +49,14 @@ if ($.fn.datebox){
 	};
 	$.fn.datebox.defaults.parser = function(s){
 		if (!s) return new Date();
-		var ss = s.split('-');
+		//调整时间转换方法
+		var ss;
+		if(s.indexOf("-")>0){
+           ss = s.split('-');
+		}else if(s.indexOf("/")>0){
+			ss== s.split('/');
+		}
+
 		var y = parseInt(ss[0],10);
 		var m = parseInt(ss[1],10);
 		var d = parseInt(ss[2],10);

@@ -13,6 +13,11 @@ public class SysUser implements Serializable{
 
     private Integer usrFlag;
 
+    ///
+    private Integer start;
+
+    private Integer size;
+
     public SysUser(Integer usrId, String usrName, String usrPassword, Integer usrRoleId, Integer usrFlag) {
         this.usrId = usrId;
         this.usrName = usrName;
@@ -23,6 +28,22 @@ public class SysUser implements Serializable{
 
     public SysUser() {
         super();
+    }
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
     }
 
     public Integer getUsrId() {

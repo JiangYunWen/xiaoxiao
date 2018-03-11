@@ -1,14 +1,11 @@
-package com.zking.crm.mapper;
+package com.zking.crm.biz;
 
 import com.zking.crm.model.SalChance;
-import com.zking.crm.model.SalPlan;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
-@Repository
-public interface SalChanceMapper {
+public interface ISalChanceBiz {
     int deleteByPrimaryKey(Integer chcId);
 
     int insert(SalChance record);

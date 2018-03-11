@@ -19,7 +19,9 @@
     from sal_plan
     where pla_id = #{plaId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultType="com.zking.crm.model.SalPlan">
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sal_plan
     where pla_id = #{plaId,jdbcType=INTEGER}
   </delete>

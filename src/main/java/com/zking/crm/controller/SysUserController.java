@@ -52,7 +52,6 @@ public class SysUserController {
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("usrName", StringUtil.formatLike(sysUser.getUsrName()));
 
-        System.out.println(sysUser.getUsrName());
         map.put("start", pageBean.getCurPage());
         map.put("size", pageBean.getPageRecord());
 
@@ -74,27 +73,14 @@ public class SysUserController {
     @RequestMapping("/addUser")
     public String addUser(SysUser sysUser, HttpServletResponse res) throws Exception{
         System.out.println("进来了");
-//        int resultTotal = 0;
         if (sysUser.getUsrId() == null) {
             iSysUser.insertSelective(sysUser);
         }else{
-            System.out.println(sysUser.getUsrId()+"：id正确");
-            System.out.println(sysUser.getUsrName()+"：name正确");
-            System.out.println(sysUser.getUsrPassword()+"：pwd正确");
-
             iSysUser.updateByPrimaryKeySelective(sysUser);
             sysUser.setUsrFlag(1);
         }
-
         JSONObject jsonObject = new JSONObject();
-
-//        if(resultTotal > 0){   //说明修改或添加成功
-//            jsonObject.put("success", true);
-//        }else{
-//            jsonObject.put("success", false);
-//        }
         RsponseUtil.write(res, jsonObject);
-
         return null;
     }
 

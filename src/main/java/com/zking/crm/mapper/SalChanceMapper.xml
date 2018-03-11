@@ -17,8 +17,25 @@
       <arg column="chc_due_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="chc_due_to" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="chc_due_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="chc_status" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="chc_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
+  </resultMap>
+  <resultMap id="list" type="com.zking.crm.model.SalChance" >
+      <id column="chc_id" property="chcId" javaType="java.lang.Integer" />
+      <result column="chc_source" property="chcSource" javaType="java.lang.String" />
+      <result column="chc_cust_name" property="chcCustName" javaType="java.lang.String" />
+      <result column="chc_title" property="chcTitle" javaType="java.lang.String" />
+      <result column="chc_rate" property="chcRate" javaType="java.lang.Integer" />
+      <result column="chc_linkman" property="chcLinkman" javaType="java.lang.String" />
+      <result column="chc_tel" property="chcTel" javaType="java.lang.String" />
+      <result column="chc_desc" property="chcDesc" javaType="java.lang.String" />
+      <result column="chc_create_id" property="chcCreateId" javaType="java.lang.Integer" />
+      <result column="chc_create_by" property="chcCreateBy" javaType="java.lang.String" />
+      <result column="chc_create_date" property="chcCreateDate" javaType="java.util.Date" />
+      <result column="chc_due_id" property="chcDueId" javaType="java.lang.Integer" />
+      <result column="chc_due_to" property="chcDueTo" javaType="java.lang.String" />
+      <result column="chc_due_date" property="chcDueDate" javaType="java.util.Date" />
+      <result column="chc_status" property="chcStatus" javaType="java.lang.Integer" />
   </resultMap>
   <sql id="Base_Column_List" >
     chc_id, chc_source, chc_cust_name, chc_title, chc_rate, chc_linkman, chc_tel, chc_desc, 
@@ -30,6 +47,16 @@
     <include refid="Base_Column_List" />
     from sal_chance
     where chc_id = #{chcId,jdbcType=INTEGER}
+  </select>
+    <select id="list" resultMap="list">
+      select *
+      from sal_chance
+      where 1=1 and chc_status=1
+    </select>
+  <select id="planlist" resultMap="list" parameterType="com.zking.crm.model.SalChance">
+      select *
+      from sal_chance
+      where 1=1 and chc_status=2
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sal_chance
@@ -46,7 +73,7 @@
       #{chcTitle,jdbcType=VARCHAR}, #{chcRate,jdbcType=INTEGER}, #{chcLinkman,jdbcType=VARCHAR}, 
       #{chcTel,jdbcType=VARCHAR}, #{chcDesc,jdbcType=VARCHAR}, #{chcCreateId,jdbcType=INTEGER}, 
       #{chcCreateBy,jdbcType=VARCHAR}, #{chcCreateDate,jdbcType=TIMESTAMP}, #{chcDueId,jdbcType=INTEGER}, 
-      #{chcDueTo,jdbcType=VARCHAR}, #{chcDueDate,jdbcType=TIMESTAMP}, #{chcStatus,jdbcType=CHAR}
+      #{chcDueTo,jdbcType=VARCHAR}, #{chcDueDate,jdbcType=TIMESTAMP}, #{chcStatus,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zking.crm.model.SalChance" >
@@ -142,7 +169,7 @@
         #{chcDueDate,jdbcType=TIMESTAMP},
       </if>
       <if test="chcStatus != null" >
-        #{chcStatus,jdbcType=CHAR},
+        #{chcStatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -189,7 +216,7 @@
         chc_due_date = #{chcDueDate,jdbcType=TIMESTAMP},
       </if>
       <if test="chcStatus != null" >
-        chc_status = #{chcStatus,jdbcType=CHAR},
+        chc_status = #{chcStatus,jdbcType=INTEGER},
       </if>
     </set>
     where chc_id = #{chcId,jdbcType=INTEGER}
@@ -209,7 +236,7 @@
       chc_due_id = #{chcDueId,jdbcType=INTEGER},
       chc_due_to = #{chcDueTo,jdbcType=VARCHAR},
       chc_due_date = #{chcDueDate,jdbcType=TIMESTAMP},
-      chc_status = #{chcStatus,jdbcType=CHAR}
+      chc_status = #{chcStatus,jdbcType=INTEGER}
     where chc_id = #{chcId,jdbcType=INTEGER}
   </update>
 </mapper>

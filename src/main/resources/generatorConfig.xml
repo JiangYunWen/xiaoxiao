@@ -66,22 +66,22 @@
 
 
         <!--******************营销管理**********************  -->
-        <!--<table schema="" tableName="sal_chance" domainObjectName="SalChance"-->
-        <!--enableCountByExample="false" enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false" enableUpdateByExample="false">-->
-        <!--&lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;-->
-        <!--&lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;-->
-        <!--&lt;!&ndash; 指定列的java数据类型 &ndash;&gt;-->
-        <!--&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
-        <!--</table>-->
-        <!--<table schema="" tableName="sal_plan" domainObjectName="SalPlan"-->
-               <!--enableCountByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--&lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;-->
-            <!--&lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;-->
-            <!--&lt;!&ndash; 指定列的java数据类型 &ndash;&gt;-->
-            <!--&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
-        <!--</table>-->
+        <table schema="" tableName="sal_chance" domainObjectName="SalChance"
+        enableCountByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" enableUpdateByExample="false">
+        <!-- 忽略列，不生成bean 字段 -->
+        <!-- <ignoreColumn column="FRED" /> -->
+        <!-- 指定列的java数据类型 -->
+        <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
+        <table schema="" tableName="sal_plan" domainObjectName="SalPlan"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false">
+            <!-- 忽略列，不生成bean 字段 -->
+            <!-- <ignoreColumn column="FRED" /> -->
+            <!-- 指定列的java数据类型 -->
+            <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+        </table>
 
 
         <!--******************基础数据**********************  -->

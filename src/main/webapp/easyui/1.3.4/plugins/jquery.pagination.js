@@ -164,7 +164,7 @@ $.fn.pagination.parseOptions=function(_21){
 var t=$(_21);
 return $.extend({},$.parser.parseOptions(_21,[{total:"number",pageSize:"number",pageNumber:"number"},{loading:"boolean",showPageList:"boolean",showRefresh:"boolean"}]),{pageList:(t.attr("pageList")?eval(t.attr("pageList")):undefined)});
 };
-$.fn.pagination.defaults={total:1,pageSize:10,pageNumber:1,pageList:[10,20,30,50],loading:false,buttons:null,showPageList:true,showRefresh:true,onSelectPage:function(_22,_23){
+$.fn.pagination.defaults={total:1,pageSize:5,pageNumber:1,pageList:[10,20,30,50],loading:false,buttons:null,showPageList:true,showRefresh:true,onSelectPage:function(_22,_23){
 },onBeforeRefresh:function(_24,_25){
 },onRefresh:function(_26,_27){
 },onChangePageSize:function(_28){

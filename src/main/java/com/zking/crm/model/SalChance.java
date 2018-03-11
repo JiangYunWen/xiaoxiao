@@ -1,8 +1,12 @@
 package com.zking.crm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class SalChance {
+public class SalChance implements Serializable{
     private Integer chcId;
 
     private String chcSource;
@@ -23,6 +27,7 @@ public class SalChance {
 
     private String chcCreateBy;
 
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date chcCreateDate;
 
     private Integer chcDueId;
@@ -31,9 +36,9 @@ public class SalChance {
 
     private Date chcDueDate;
 
-    private String chcStatus;
+    private Integer chcStatus;
 
-    public SalChance(Integer chcId, String chcSource, String chcCustName, String chcTitle, Integer chcRate, String chcLinkman, String chcTel, String chcDesc, Integer chcCreateId, String chcCreateBy, Date chcCreateDate, Integer chcDueId, String chcDueTo, Date chcDueDate, String chcStatus) {
+    public SalChance(Integer chcId, String chcSource, String chcCustName, String chcTitle, Integer chcRate, String chcLinkman, String chcTel, String chcDesc, Integer chcCreateId, String chcCreateBy, Date chcCreateDate, Integer chcDueId, String chcDueTo, Date chcDueDate, Integer chcStatus) {
         this.chcId = chcId;
         this.chcSource = chcSource;
         this.chcCustName = chcCustName;
@@ -167,11 +172,32 @@ public class SalChance {
         this.chcDueDate = chcDueDate;
     }
 
-    public String getChcStatus() {
+    public Integer getChcStatus() {
         return chcStatus;
     }
 
-    public void setChcStatus(String chcStatus) {
+    public void setChcStatus(Integer chcStatus) {
         this.chcStatus = chcStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "SalChance{" +
+                "chcId=" + chcId +
+                ", chcSource='" + chcSource + '\'' +
+                ", chcCustName='" + chcCustName + '\'' +
+                ", chcTitle='" + chcTitle + '\'' +
+                ", chcRate=" + chcRate +
+                ", chcLinkman='" + chcLinkman + '\'' +
+                ", chcTel='" + chcTel + '\'' +
+                ", chcDesc='" + chcDesc + '\'' +
+                ", chcCreateId=" + chcCreateId +
+                ", chcCreateBy='" + chcCreateBy + '\'' +
+                ", chcCreateDate=" + chcCreateDate +
+                ", chcDueId=" + chcDueId +
+                ", chcDueTo='" + chcDueTo + '\'' +
+                ", chcDueDate=" + chcDueDate +
+                ", chcStatus=" + chcStatus +
+                '}';
     }
 }
