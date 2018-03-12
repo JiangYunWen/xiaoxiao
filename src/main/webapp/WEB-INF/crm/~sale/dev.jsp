@@ -19,8 +19,10 @@
 		<a href="#"
 		   onclick="openzxjhDialog()" title="执行计划"   class="easyui-linkbutton" iconCls="icon-book-go" plain="true">执行计划
 		</a>
-		<a href="#" class="easyui-linkbutton" title="开发成功" iconCls="icon-accept" onclick="" plain="true">开发成功</a>
-		<a href="#" class="easyui-linkbutton" title="终止开发" iconCls="icon-cross" onclick="cancel()" plain="true">终止开发</a>
+		<a href="#"
+		   class="easyui-linkbutton" title="开发成功" iconCls="icon-accept" onclick="openkfcgDialog()" plain="true">开发成功</a>
+		<a href="#"
+		   class="easyui-linkbutton" title="终止开发" iconCls="icon-cross" onclick="cancel()" plain="true">终止开发</a>
 
 		<div>
 			&nbsp;用户名：&nbsp;<input type="text" id="userName" size="20"/>
@@ -78,7 +80,6 @@
                        success:function(data){
                            if(data){
                                $.messager.alert('信息提示','保存成功！','info');
-                               $('#wu-dialog2').dialog('close');
                                $("#plan").datagrid("reload");//自动加载
                            }
                            else
@@ -104,7 +105,6 @@
                         success:function(data){
                             if(data){
                                 $.messager.alert('信息提示','保存成功！','info');
-                                $('#wu-dialogexec').dialog('close');
                                 $("#plan").datagrid("reload");//自动加载
                             }
                             else
@@ -121,8 +121,14 @@
 
             //制定计划
             function openzdjhDialog() {
-               var item =$("#plan").datagrid("getSelected")
-                $("#wu-form2").form('load', item);
+               var item =$("#plan").datagrid("getSelections")
+                var row = item[0];
+                if(item.length!=1) {
+                    $.messager.alert("系统提示", "请选择一条制定计划");
+                    return;
+                }
+
+                $("#wu-form2").form('load', row);
                 $("#wu-dialog2").dialog({
                     closed: false,
                     modal:true,
@@ -160,9 +166,13 @@
 
         //执行计划
         function openzxjhDialog() {
-            var item =$("#plan").datagrid("getSelected")
-            alert(item.chcId);
-            $("#wu-formdev").form('load', item);
+            var item =$("#plan").datagrid("getSelections")
+            var row = item[0];
+            if(item.length!=1) {
+                $.messager.alert("系统提示", "请选择一条要执行的计划");
+                return;
+            }
+            $("#wu-formdev").form('load', row);
             $("#wu-dialogexec").dialog({
                 closed: false,
                 modal:true,
@@ -194,6 +204,35 @@
                     }
                 }]
             });
+        }
+
+
+
+
+
+        //开发成功
+        function openkfcgDialog() {
+                var selectedRows = $("#plan").datagrid("getSelections");
+                var row = selectedRows[0];
+                if(selectedRows.length!=1) {
+                    $.messager.alert("系统提示", "请选择一条要开发成功的计划");
+                    return;
+                }
+                $.messager.confirm("系统提示", "您确定要开发成功这条计划吗？", function(r) {
+                    if (r) {
+                        $.post("/plan/loadkf", {chcId:selectedRows.chcId}, function(result) {
+                            if (result.success) {
+                                $.messager.alert("系统提示", "计划已开发成功！");
+                                $("#plan").datagrid("reload");
+                            } else {
+                                $.messager.alert("系统提示", "计划开发失败，请联系系统管理员！");
+                            }
+                        }, "json");
+                    }
+                });
+
+
+
         }
 
 	</script>
@@ -281,7 +320,7 @@
 
 <div id="wu-dialogexec" class="easyui-dialog" data-options="closed:true,iconCls:'icon-save'" style="width:550px;  padding:20px;">
 	<form id="wu-formdev" method="post">
-		<table>
+		<table  class="data_list_table">
 		<tr>
 		<th width="50" align="center" >编号</th>
 		<td><input readonly id="planChcId"  name="chcId"/></td>

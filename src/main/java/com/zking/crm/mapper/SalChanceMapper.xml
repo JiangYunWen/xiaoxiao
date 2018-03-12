@@ -13,7 +13,7 @@
       <arg column="chc_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="chc_create_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="chc_create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="chc_create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="chc_create_date" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="chc_due_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="chc_due_to" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="chc_due_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -31,7 +31,7 @@
       <result column="chc_desc" property="chcDesc" javaType="java.lang.String" />
       <result column="chc_create_id" property="chcCreateId" javaType="java.lang.Integer" />
       <result column="chc_create_by" property="chcCreateBy" javaType="java.lang.String" />
-      <result column="chc_create_date" property="chcCreateDate" javaType="java.util.Date" />
+      <result column="chc_create_date" property="chcCreateDate" javaType="java.lang.String" />
       <result column="chc_due_id" property="chcDueId" javaType="java.lang.Integer" />
       <result column="chc_due_to" property="chcDueTo" javaType="java.lang.String" />
       <result column="chc_due_date" property="chcDueDate" javaType="java.util.Date" />
@@ -71,7 +71,7 @@
     values (#{chcId,jdbcType=INTEGER}, #{chcSource,jdbcType=VARCHAR}, #{chcCustName,jdbcType=VARCHAR}, 
       #{chcTitle,jdbcType=VARCHAR}, #{chcRate,jdbcType=INTEGER}, #{chcLinkman,jdbcType=VARCHAR}, 
       #{chcTel,jdbcType=VARCHAR}, #{chcDesc,jdbcType=VARCHAR}, #{chcCreateId,jdbcType=INTEGER}, 
-      #{chcCreateBy,jdbcType=VARCHAR}, #{chcCreateDate,jdbcType=TIMESTAMP}, #{chcDueId,jdbcType=INTEGER}, 
+      #{chcCreateBy,jdbcType=VARCHAR}, #{chcCreateDate,jdbcType=VARCHAR}, #{chcDueId,jdbcType=INTEGER},
       #{chcDueTo,jdbcType=VARCHAR}, #{chcDueDate,jdbcType=TIMESTAMP}, #{chcStatus,jdbcType=INTEGER}
       )
   </insert>
@@ -156,7 +156,7 @@
         #{chcCreateBy,jdbcType=VARCHAR},
       </if>
       <if test="chcCreateDate != null" >
-        #{chcCreateDate,jdbcType=TIMESTAMP},
+        #{chcCreateDate,jdbcType=VARCHAR},
       </if>
       <if test="chcDueId != null" >
         #{chcDueId,jdbcType=INTEGER},
@@ -203,7 +203,7 @@
         chc_create_by = #{chcCreateBy,jdbcType=VARCHAR},
       </if>
       <if test="chcCreateDate != null" >
-        chc_create_date = #{chcCreateDate,jdbcType=TIMESTAMP},
+        chc_create_date = #{chcCreateDate,jdbcType=VARCHAR},
       </if>
       <if test="chcDueId != null" >
         chc_due_id = #{chcDueId,jdbcType=INTEGER},
@@ -231,7 +231,7 @@
       chc_desc = #{chcDesc,jdbcType=VARCHAR},
       chc_create_id = #{chcCreateId,jdbcType=INTEGER},
       chc_create_by = #{chcCreateBy,jdbcType=VARCHAR},
-      chc_create_date = #{chcCreateDate,jdbcType=TIMESTAMP},
+      chc_create_date = #{chcCreateDate,jdbcType=VARCHAR},
       chc_due_id = #{chcDueId,jdbcType=INTEGER},
       chc_due_to = #{chcDueTo,jdbcType=VARCHAR},
       chc_due_date = #{chcDueDate,jdbcType=TIMESTAMP},

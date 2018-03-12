@@ -13,11 +13,13 @@ package com.zking.crm.controller;
 import com.zking.crm.biz.ISalChanceBiz;
 import com.zking.crm.model.SalChance;
 import com.zking.crm.model.SalPlan;
+import com.zking.crm.util.JsonDateValueProcessor;
 import com.zking.crm.util.PageBean;
 import com.zking.crm.util.RsponseUtil;
 import com.zking.crm.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -58,15 +60,15 @@ public class SalChanceController {
 
 
         List<SalChance> list = salChanceBiz.list(map);
-//        for (SalChance l : list) {
-//            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//            String ss = format.format(l.getChcCreateDate());
-//
-//             l.setChcCreateDate(format.parse(ss));
-//        }
 
         JSONObject result=new JSONObject();
-        JSONArray jsonArray=JSONArray.fromObject(list);
+
+
+        JsonConfig config = new JsonConfig();
+        config.setIgnoreDefaultExcludes(false);
+        config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd HH:mm:ss"));
+
+        JSONArray jsonArray=JSONArray.fromObject(list,config);
         result.put("rows", jsonArray);
 
         RsponseUtil.write(res, result);
@@ -78,6 +80,7 @@ public class SalChanceController {
     @RequestMapping("/saveSal")
     public String add(SalChance salChance, HttpServletResponse res) throws Exception{
         System.out.println("saveSal进来了");
+
         if (salChance.getChcId() == null) {
             salChanceBiz.insertSelective(salChance);
         }else{

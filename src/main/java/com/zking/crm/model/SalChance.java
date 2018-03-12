@@ -27,8 +27,7 @@ public class SalChance implements Serializable{
 
     private String chcCreateBy;
 
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    private Date chcCreateDate;
+    private String chcCreateDate;
 
     private Integer chcDueId;
 
@@ -38,7 +37,7 @@ public class SalChance implements Serializable{
 
     private Integer chcStatus;
 
-    public SalChance(Integer chcId, String chcSource, String chcCustName, String chcTitle, Integer chcRate, String chcLinkman, String chcTel, String chcDesc, Integer chcCreateId, String chcCreateBy, Date chcCreateDate, Integer chcDueId, String chcDueTo, Date chcDueDate, Integer chcStatus) {
+    public SalChance(Integer chcId, String chcSource, String chcCustName, String chcTitle, Integer chcRate, String chcLinkman, String chcTel, String chcDesc, Integer chcCreateId, String chcCreateBy, String chcCreateDate, Integer chcDueId, String chcDueTo, Date chcDueDate, Integer chcStatus) {
         this.chcId = chcId;
         this.chcSource = chcSource;
         this.chcCustName = chcCustName;
@@ -140,11 +139,11 @@ public class SalChance implements Serializable{
         this.chcCreateBy = chcCreateBy;
     }
 
-    public Date getChcCreateDate() {
+    public String getChcCreateDate() {
         return chcCreateDate;
     }
 
-    public void setChcCreateDate(Date chcCreateDate) {
+    public void setChcCreateDate(String chcCreateDate) {
         this.chcCreateDate = chcCreateDate;
     }
 

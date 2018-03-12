@@ -10,7 +10,6 @@ public class SalPlan implements Serializable{
 
     private Integer plaChcId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date plaDate;
 
     private String plaTodo;
